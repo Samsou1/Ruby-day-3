@@ -1,28 +1,65 @@
 def full_pyramid
-  puts "Salut, bienvenue dans ma super pyramide ! Combien d'étages veux-tu ?"
-  print '>'
-  reach_number = gets.chomp.to_i
-  if reach_number.between?(1,25)
-    puts 'Voici la pyramide'
-    reach_number.times do |increment|
-      puts ' ' * (reach_number - increment) + '#' * (2 * increment + 1)
-    end
+  floors = 0
+  until floors >= 1 && floors <= 25
+    print 'Choose a height between 1 and 25 floors: '
+    floors = gets.to_i
+  end
+  floors.times do |increment|
+    puts ' ' * (floors - increment) + '#' * (2 * increment + 1)
   end
 end
 
 def wtf_pyramid
-  puts "Salut, bienvenue dans ma super pyramide ! Combien d'étages veux-tu ?"
-  print '>'
-  reach_number = gets.chomp.to_i
-  if reach_number.between?(1,25) and reach_number.odd?
-    puts 'Voici la pyramide'
-    (reach_number/2 +1).times do |increment|
-      puts ' ' * (reach_number - increment) + '#' * (2 * increment + 1)
-    end
-    (reach_number/2).times do |increment_2|
-      puts ' ' * (increment_2 + reach_number/2 +2) + '#' * (reach_number - 2 * increment_2 -2)
-    end
+  floors = 0
+  until floors >= 1 && floors <= 25
+    print 'Choose a height between 1 and 25 floors: '
+    floors = gets.to_i
+  end
+  (floors/2 +1).times do |increment|
+      puts ' ' * (floors - increment) + '#' * (2 * increment + 1)
+  end
+  (floors/2).times do |increment_2|
+      puts ' ' * (increment_2 + floors / 2 + 2) + '#' * (floors - 2 * increment_2 - 2)
   end
 end
 
-wtf_pyramid
+# wtf_pyramid
+
+def half_pyramid_pef
+  floors = 0
+  until floors >= 1 && floors <= 25
+    print 'Choose a height between 1 and 25 floors: '
+    floors = gets.to_i
+  end
+  floors.times do |i|
+    puts ' ' * (floors - (i + 1)) + '#' * (i + 1)
+  end
+end
+
+def full_pyramid_pef
+  floors = 0
+  until floors >= 1 && floors <= 25
+    print 'Choose a height between 1 and 25 floors: '
+    floors = gets.to_i
+  end
+  floors.times do |i|
+    puts ' ' * (floors - (i + 1)) + '#' * (2 * (i + 1) - 1)
+  end
+end
+
+def wtf_pyramid_pef
+  floors = 0
+  until floors >= 1 && floors <= 25 && floors.odd?
+    print 'Choose an ODD height between 1 and 25 floors: '
+    floors = gets.to_i
+    steps = floors / 2 - 1
+  end
+  steps.times do |i|
+    puts ' ' * (steps - (i + 1)) + '#' * (2 * (i + 1) - 1)
+  end
+  (steps - 1).times do |i|
+    puts ' ' * (i + 1) + '#' * ((2 * steps) - (2 * i) - 3)
+  end
+end
+
+wtf_pyramid_pef
